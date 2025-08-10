@@ -1,2 +1,95 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Git LFS configuration for media files
+# These files will be managed by Git LFS and synced to Google Drive
+Media/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+Media/**/*.mov filter=lfs diff=lfs merge=lfs -text
+Media/**/*.avi filter=lfs diff=lfs merge=lfs -text
+Media/**/*.wmv filter=lfs diff=lfs merge=lfs -text
+Media/**/*.flv filter=lfs diff=lfs merge=lfs -text
+Media/**/*.mkv filter=lfs diff=lfs merge=lfs -text
+Media/**/*.m4v filter=lfs diff=lfs merge=lfs -text
+Media/**/*.3gp filter=lfs diff=lfs merge=lfs -text
+Media/**/*.webm filter=lfs diff=lfs merge=lfs -text
+Media/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+Media/**/*.wav filter=lfs diff=lfs merge=lfs -text
+Media/**/*.aac filter=lfs diff=lfs merge=lfs -text
+Media/**/*.flac filter=lfs diff=lfs merge=lfs -text
+Media/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+Media/**/*.wma filter=lfs diff=lfs merge=lfs -text
+Media/**/*.m4a filter=lfs diff=lfs merge=lfs -text
+Media/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Media/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+Media/**/*.png filter=lfs diff=lfs merge=lfs -text
+Media/**/*.gif filter=lfs diff=lfs merge=lfs -text
+Media/**/*.bmp filter=lfs diff=lfs merge=lfs -text
+Media/**/*.tiff filter=lfs diff=lfs merge=lfs -text
+Media/**/*.tga filter=lfs diff=lfs merge=lfs -text
+Media/**/*.psd filter=lfs diff=lfs merge=lfs -text
+Media/**/*.ai filter=lfs diff=lfs merge=lfs -text
+Media/**/*.eps filter=lfs diff=lfs merge=lfs -text
+Media/**/*.svg filter=lfs diff=lfs merge=lfs -text
+Media/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Background music files
+background music/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+background music/**/*.wav filter=lfs diff=lfs merge=lfs -text
+background music/**/*.aac filter=lfs diff=lfs merge=lfs -text
+background music/**/*.flac filter=lfs diff=lfs merge=lfs -text
+background music/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+background music/**/*.wma filter=lfs diff=lfs merge=lfs -text
+background music/**/*.m4a filter=lfs diff=lfs merge=lfs -text
+
+# Logo files
+logo/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+logo/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+logo/**/*.png filter=lfs diff=lfs merge=lfs -text
+logo/**/*.gif filter=lfs diff=lfs merge=lfs -text
+logo/**/*.bmp filter=lfs diff=lfs merge=lfs -text
+logo/**/*.tiff filter=lfs diff=lfs merge=lfs -text
+logo/**/*.svg filter=lfs diff=lfs merge=lfs -text
+logo/**/*.psd filter=lfs diff=lfs merge=lfs -text
+logo/**/*.ai filter=lfs diff=lfs merge=lfs -text
+logo/**/*.eps filter=lfs diff=lfs merge=lfs -text
+
+# ProPresenter library files (all versions)
+Libraries/**/*.pro* filter=lfs diff=lfs merge=lfs -text
+
+# Playlist files (all versions)
+Playlists/**/*.pro*playlist filter=lfs diff=lfs merge=lfs -text
+
+# Doc Sync files
+Doc Sync/**/*.proplaylist filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.docx filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.doc filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.png filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+Doc Sync/**/*.wav filter=lfs diff=lfs merge=lfs -text
+
+# Presets
+Presets/**/*.preset filter=lfs diff=lfs merge=lfs -text
+Presets/**/*.effect filter=lfs diff=lfs merge=lfs -text
+Presets/**/*.transition filter=lfs diff=lfs merge=lfs -text
+
+# Themes
+Themes/**/*.theme filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.png filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.gif filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.bmp filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.tiff filter=lfs diff=lfs merge=lfs -text
+Themes/**/*.svg filter=lfs diff=lfs merge=lfs -text
+
+# Git LFS configuration for Media folder synchronization
+# This will redirect Media folder to Google Drive sync location
+Media/ text eol=lf
+Media/** text eol=lf
+Media/**/* text eol=lf
+
+# Google Drive sync path configuration
+# The Media folder will be synced to: /Users/jonathan_jing/Library/CloudStorage/GoogleDrive-jonathanjing@graceirvine.org/Shared drives/ProPresenter Sync/Media

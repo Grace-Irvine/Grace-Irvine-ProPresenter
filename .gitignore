@@ -1,0 +1,415 @@
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ProPresenter specific files (tracked via Git LFS)
+# *.pro files are tracked for version control using Git LFS
+# Uncomment the lines below if you want to exclude .pro files from version control
+# *.pro
+# *.pro6
+# *.pro7
+# *.pro8
+# *.pro9
+# *.pro10
+# *.pro11
+# *.pro12
+# *.pro13
+# *.pro14
+# *.pro15
+# *.pro16
+# *.pro17
+# *.pro18
+# *.pro19
+# *.pro20
+# *.pro21
+# *.pro22
+# *.pro23
+# *.pro24
+# *.pro25
+# *.pro26
+# *.pro27
+# *.pro28
+# *.pro29
+# *.pro30
+# *.pro31
+# *.pro32
+# *.pro33
+# *.pro34
+# *.pro35
+# *.pro36
+# *.pro37
+# *.pro38
+# *.pro39
+# *.pro40
+# *.pro41
+# *.pro42
+# *.pro43
+# *.pro44
+# *.pro45
+# *.pro46
+# *.pro47
+# *.pro48
+# *.pro49
+# *.pro50
+# *.pro51
+# *.pro52
+# *.pro53
+# *.pro54
+# *.pro55
+# *.pro56
+# *.pro57
+# *.pro58
+# *.pro59
+# *.pro60
+# *.pro61
+# *.pro62
+# *.pro63
+# *.pro64
+# *.pro65
+# *.pro66
+# *.pro67
+# *.pro68
+# *.pro69
+# *.pro70
+# *.pro71
+# *.pro72
+# *.pro73
+# *.pro74
+# *.pro75
+# *.pro76
+# *.pro77
+# *.pro78
+# *.pro79
+# *.pro80
+# *.pro81
+# *.pro82
+# *.pro83
+# *.pro84
+# *.pro85
+# *.pro86
+# *.pro87
+# *.pro88
+# *.pro89
+# *.pro90
+# *.pro91
+# *.pro92
+# *.pro93
+# *.pro94
+# *.pro95
+# *.pro96
+# *.pro97
+# *.pro98
+# *.pro99
+# *.pro100
+
+# ProPresenter cache and temporary files
+*.cache
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# Media files (managed via Google Drive sync)
+Media/**/*.mp4
+Media/**/*.mov
+Media/**/*.avi
+Media/**/*.wmv
+Media/**/*.flv
+Media/**/*.mkv
+Media/**/*.m4v
+Media/**/*.3gp
+Media/**/*.webm
+Media/**/*.mp3
+Media/**/*.wav
+Media/**/*.aac
+Media/**/*.flac
+Media/**/*.ogg
+Media/**/*.wma
+Media/**/*.m4a
+Media/**/*.jpg
+Media/**/*.jpeg
+Media/**/*.png
+Media/**/*.gif
+Media/**/*.bmp
+Media/**/*.tiff
+Media/**/*.tga
+Media/**/*.psd
+Media/**/*.ai
+Media/**/*.eps
+Media/**/*.svg
+Media/**/*.pdf
+
+# Background music files
+background music/**/*.mp3
+background music/**/*.wav
+background music/**/*.aac
+background music/**/*.flac
+background music/**/*.ogg
+background music/**/*.wma
+background music/**/*.m4a
+
+# Logo files
+logo/**/*.jpg
+logo/**/*.jpeg
+logo/**/*.png
+logo/**/*.gif
+logo/**/*.bmp
+logo/**/*.tiff
+logo/**/*.svg
+logo/**/*.psd
+logo/**/*.ai
+logo/**/*.eps
+
+# ProPresenter library files (these are large and should be synced via Google Drive)
+Libraries/**/*.pro
+Libraries/**/*.pro6
+Libraries/**/*.pro7
+Libraries/**/*.pro8
+Libraries/**/*.pro9
+Libraries/**/*.pro10
+Libraries/**/*.pro11
+Libraries/**/*.pro12
+Libraries/**/*.pro13
+Libraries/**/*.pro14
+Libraries/**/*.pro15
+Libraries/**/*.pro16
+Libraries/**/*.pro17
+Libraries/**/*.pro18
+Libraries/**/*.pro19
+Libraries/**/*.pro20
+Libraries/**/*.pro21
+Libraries/**/*.pro22
+Libraries/**/*.pro23
+Libraries/**/*.pro24
+Libraries/**/*.pro25
+Libraries/**/*.pro26
+Libraries/**/*.pro27
+Libraries/**/*.pro28
+Libraries/**/*.pro29
+Libraries/**/*.pro30
+Libraries/**/*.pro31
+Libraries/**/*.pro32
+Libraries/**/*.pro33
+Libraries/**/*.pro34
+Libraries/**/*.pro35
+Libraries/**/*.pro36
+Libraries/**/*.pro37
+Libraries/**/*.pro38
+Libraries/**/*.pro39
+Libraries/**/*.pro40
+Libraries/**/*.pro41
+Libraries/**/*.pro42
+Libraries/**/*.pro43
+Libraries/**/*.pro44
+Libraries/**/*.pro45
+Libraries/**/*.pro46
+Libraries/**/*.pro47
+Libraries/**/*.pro48
+Libraries/**/*.pro49
+Libraries/**/*.pro50
+Libraries/**/*.pro51
+Libraries/**/*.pro52
+Libraries/**/*.pro53
+Libraries/**/*.pro54
+Libraries/**/*.pro55
+Libraries/**/*.pro56
+Libraries/**/*.pro57
+Libraries/**/*.pro58
+Libraries/**/*.pro59
+Libraries/**/*.pro60
+Libraries/**/*.pro61
+Libraries/**/*.pro62
+Libraries/**/*.pro63
+Libraries/**/*.pro64
+Libraries/**/*.pro65
+Libraries/**/*.pro66
+Libraries/**/*.pro67
+Libraries/**/*.pro68
+Libraries/**/*.pro69
+Libraries/**/*.pro70
+Libraries/**/*.pro71
+Libraries/**/*.pro72
+Libraries/**/*.pro73
+Libraries/**/*.pro74
+Libraries/**/*.pro75
+Libraries/**/*.pro76
+Libraries/**/*.pro77
+Libraries/**/*.pro78
+Libraries/**/*.pro79
+Libraries/**/*.pro80
+Libraries/**/*.pro81
+Libraries/**/*.pro82
+Libraries/**/*.pro83
+Libraries/**/*.pro84
+Libraries/**/*.pro85
+Libraries/**/*.pro86
+Libraries/**/*.pro87
+Libraries/**/*.pro88
+Libraries/**/*.pro89
+Libraries/**/*.pro90
+Libraries/**/*.pro91
+Libraries/**/*.pro92
+Libraries/**/*.pro93
+Libraries/**/*.pro94
+Libraries/**/*.pro95
+Libraries/**/*.pro96
+Libraries/**/*.pro97
+Libraries/**/*.pro98
+Libraries/**/*.pro99
+Libraries/**/*.pro100
+
+# Playlist files
+Playlists/**/*.proplaylist
+Playlists/**/*.pro6playlist
+Playlists/**/*.pro7playlist
+Playlists/**/*.pro8playlist
+Playlists/**/*.pro9playlist
+Playlists/**/*.pro10playlist
+Playlists/**/*.pro11playlist
+Playlists/**/*.pro12playlist
+Playlists/**/*.pro13playlist
+Playlists/**/*.pro14playlist
+Playlists/**/*.pro15playlist
+Playlists/**/*.pro16playlist
+Playlists/**/*.pro17playlist
+Playlists/**/*.pro18playlist
+Playlists/**/*.pro19playlist
+Playlists/**/*.pro20playlist
+Playlists/**/*.pro21playlist
+Playlists/**/*.pro22playlist
+Playlists/**/*.pro23playlist
+Playlists/**/*.pro24playlist
+Playlists/**/*.pro25playlist
+Playlists/**/*.pro26playlist
+Playlists/**/*.pro27playlist
+Playlists/**/*.pro28playlist
+Playlists/**/*.pro29playlist
+Playlists/**/*.pro30playlist
+Playlists/**/*.pro31playlist
+Playlists/**/*.pro32playlist
+Playlists/**/*.pro33playlist
+Playlists/**/*.pro34playlist
+Playlists/**/*.pro35playlist
+Playlists/**/*.pro36playlist
+Playlists/**/*.pro37playlist
+Playlists/**/*.pro38playlist
+Playlists/**/*.pro39playlist
+Playlists/**/*.pro40playlist
+Playlists/**/*.pro41playlist
+Playlists/**/*.pro42playlist
+Playlists/**/*.pro43playlist
+Playlists/**/*.pro44playlist
+Playlists/**/*.pro45playlist
+Playlists/**/*.pro46playlist
+Playlists/**/*.pro47playlist
+Playlists/**/*.pro48playlist
+Playlists/**/*.pro49playlist
+Playlists/**/*.pro50playlist
+Playlists/**/*.pro51playlist
+Playlists/**/*.pro52playlist
+Playlists/**/*.pro53playlist
+Playlists/**/*.pro54playlist
+Playlists/**/*.pro55playlist
+Playlists/**/*.pro56playlist
+Playlists/**/*.pro57playlist
+Playlists/**/*.pro58playlist
+Playlists/**/*.pro59playlist
+Playlists/**/*.pro60playlist
+Playlists/**/*.pro61playlist
+Playlists/**/*.pro62playlist
+Playlists/**/*.pro63playlist
+Playlists/**/*.pro64playlist
+Playlists/**/*.pro65playlist
+Playlists/**/*.pro66playlist
+Playlists/**/*.pro67playlist
+Playlists/**/*.pro68playlist
+Playlists/**/*.pro69playlist
+Playlists/**/*.pro70playlist
+Playlists/**/*.pro71playlist
+Playlists/**/*.pro72playlist
+Playlists/**/*.pro73playlist
+Playlists/**/*.pro74playlist
+Playlists/**/*.pro75playlist
+Playlists/**/*.pro76playlist
+Playlists/**/*.pro77playlist
+Playlists/**/*.pro78playlist
+Playlists/**/*.pro79playlist
+Playlists/**/*.pro80playlist
+Playlists/**/*.pro81playlist
+Playlists/**/*.pro82playlist
+Playlists/**/*.pro83playlist
+Playlists/**/*.pro84playlist
+Playlists/**/*.pro85playlist
+Playlists/**/*.pro86playlist
+Playlists/**/*.pro87playlist
+Playlists/**/*.pro88playlist
+Playlists/**/*.pro89playlist
+Playlists/**/*.pro90playlist
+Playlists/**/*.pro91playlist
+Playlists/**/*.pro92playlist
+Playlists/**/*.pro93playlist
+Playlists/**/*.pro94playlist
+Playlists/**/*.pro95playlist
+Playlists/**/*.pro96playlist
+Playlists/**/*.pro97playlist
+Playlists/**/*.pro98playlist
+Playlists/**/*.pro99playlist
+Playlists/**/*.pro100playlist
+
+# Doc Sync files
+Doc Sync/**/*.proplaylist
+Doc Sync/**/*.docx
+Doc Sync/**/*.doc
+Doc Sync/**/*.pdf
+Doc Sync/**/*.png
+Doc Sync/**/*.jpg
+Doc Sync/**/*.jpeg
+Doc Sync/**/*.mp3
+Doc Sync/**/*.wav
+
+# Downloads directory (temporary files)
+Downloads/
+
+# Presets (these can be large)
+Presets/**/*.preset
+Presets/**/*.effect
+Presets/**/*.transition
+
+# Themes (these can be large)
+Themes/**/*.theme
+Themes/**/*.png
+Themes/**/*.jpg
+Themes/**/*.jpeg
+Themes/**/*.gif
+Themes/**/*.bmp
+Themes/**/*.tiff
+Themes/**/*.svg
+
+# Configuration files (these should be tracked for version control)
+# Configuration/**/*.xml
+# Configuration/**/*.json
+# Configuration/**/*.plist
+
+# Git LFS files
+.git/lfs/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Log files
+*.log
+*.out
+
+# Temporary directories
+tmp/
+temp/
