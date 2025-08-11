@@ -1,227 +1,162 @@
-# ProPresenter Version Control & Google Drive Sync
 
-This project provides version control for ProPresenter workspaces with Google Drive synchronization for media files.
+### **关于教会 ProPresenter 制作工作流的深度分析与优化方案**
 
-## Features
+**引言**
+本方案旨在系统性地分析当前教会 ProPresenter 制作工作流中存在的瓶颈与痛点，并基于此提出一个分三阶段实施的、循序渐进的改进计划。目标是提升制作效率、降低出错率、增强团队协作的灵活性与可靠性，并最终实现部分流程的自动化，将同工从繁琐的重复性工作中解放出来。
 
-- **Version Control**: Track changes to ProPresenter configurations, themes, and playlists
-- **Git LFS**: Large file storage for media files, libraries, and presentations
-- **Google Drive Sync**: Automatic synchronization of Media folder with Google Drive
-- **Selective Tracking**: Only track essential files, exclude large media files from Git
+---
 
-## Project Structure
+### **第一部分：现有工作流深度分析 (As-Is Analysis)**
 
-```
-ProPresenter/
-├── .gitignore              # Git ignore rules
-├── .gitattributes          # Git LFS configuration
-├── setup-media-sync.sh     # Setup script for Google Drive sync
-├── README.md               # This file
-├── Configuration/          # ProPresenter configuration files (tracked)
-├── Libraries/              # ProPresenter libraries (tracked via Git LFS)
-├── Media/                  # Media files (synced to Google Drive)
-├── Playlists/              # Playlist files (tracked via Git LFS)
-├── Themes/                 # Theme files (tracked via Git LFS)
-├── background music/       # Background music (tracked via Git LFS)
-├── logo/                   # Logo files (tracked via Git LFS)
-└── Doc Sync/              # Document sync files (tracked via Git LFS)
-```
+你的草稿已经很好地总结了现状，我们来将其深化和归类。
 
-## Setup Instructions
+**A. 内容收集 (Content Collection)**
+这是一个典型的“信息孤岛”问题。信息散落在各个角落，制作同工需要扮演“信息汇总者”的角色。
 
-### Prerequisites
+* **信息源 (Sources):**
+  1. **Google Sheet (事工总表):** 讲员、读经人、证道经文 (相对固定的信息)。
+  2. **微信群 (屏幕每周更新):** 证道主题、小标题 (动态、较晚确认的信息)。
+  3. **微信群 (每周敬拜群):** 敬拜诗歌、歌词、顺序 (动态、可能临时调整)。
+  4. **Google Doc (每周串词):** 宣召、认罪悔改、报告事项 (细节、格式化文本)。
+* **隐性问题 (Hidden Problems):**
+  * **低效:** 制作同工需在 4 个或更多不同的地方“拉取”信息，耗费大量时间和精力。
+  * **高出错率:** 手动复制粘贴极易出错（如：经文章节错误、歌词版本不对、顺序颠倒）。
+  * **沟通成本高:** 如果信息不明确或有误，制作同工需要反向去各个群里追问、确认。
+  * **缺乏“单一信息源” (Single Source of Truth):** 当不同渠道信息冲突时（例如，敬拜群的诗歌顺序和串词文档不一致），不知道以哪个为准。
 
-1. **Git LFS**: Install Git Large File Storage
-   ```bash
-   # macOS with Homebrew
-   brew install git-lfs
-   
-   # Or download from: https://git-lfs.github.com/
-   ```
+**B. 内容制作 (Content Production)**
+这是一个典型的“物理瓶颈”问题。
 
-2. **Google Drive**: Ensure Google Drive is installed and syncing to:
-   ```
-   /Users/jonathan_jing/Library/CloudStorage/GoogleDrive-jonathanjing@graceirvine.org/Shared drives/ProPresenter Sync/
-   ```
+* **流程:**
+  1. 制作同工获取承载 ProPresenter 软件和数据的“主电脑”。
+  2. 在该电脑上完成所有内容的整合与制作。
+  3. 周日将电脑带到教会。
+* **隐性问题 (Hidden Problems):**
+  * **单点故障 (Single Point of Failure):** 如果这台电脑损坏、丢失，或负责传递的同工临时有事，整个主日屏幕事工将面临瘫痪风险。
+  * **协作性差:** 无法实现多人同步协作。例如，A同工负责输入诗歌，B同工负责制作讲道PPT，他们必须串行工作，无法并行。
+  * **时间和空间限制:** 制作必须在有这台电脑的情况下进行，限制了同工的灵活性。
 
-### Initial Setup
+**C. 核心痛点总结 (Key Pain Points)**
 
-#### For New Computers (First Time Setup)
+1. **信息孤岛与流程断裂:** 内容收集完全依赖人工，流程繁琐且易错。
+2. **物理瓶颈与单点故障:** “传递电脑”的模式严重限制了协作，且风险极高。
+3. **临时变更压力巨大:** 讲道标题等关键信息在周六晚才确定，给制作同工带来巨大的“死线”压力，没有足够时间检查和优化。
+4. **缺乏协作与版本管理:** 无法有效追踪谁、在何时、修改了什么内容，出现问题难以追溯。
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd ProPresenter
-   ```
+---
 
-2. **Run the new computer setup script**:
-   ```bash
-   chmod +x setup-new-computer.sh
-   ./setup-new-computer.sh
-   ```
+### **第二部分：分阶段改进方案 (Phased Improvement Plan)**
 
-3. **Verify the setup**:
-   ```bash
-   ./test-config.sh
-   ```
+你的三阶段方案非常合理，我们来逐一细化。
 
-#### For Existing Setup
+#### **Phase 1: 实现远程协作与同步 (Goal: Decouple from the Physical Machine)**
 
-1. **Run the media sync setup script**:
-   ```bash
-   ./setup-media-sync.sh
-   ```
+这是解决“物理瓶颈”问题的关键第一步，投资回报率最高。
 
-2. **Commit the changes**:
-   ```bash
-   git add .
-   git commit -m "Setup media sync with Google Drive"
-   git push
-   ```
+* **核心工具:** ProPresenter Sync 功能。
+* **具体实施方案:**
+  1. **选择同步方案:** ProPresenter 提供两种同步方式：
+     * **ProPresenter Cloud (官方云):** 付费，最稳定，无缝同步。如果预算允许，这是最佳选择。
+     * **本地同步 (Local Sync):** **免费，完全符合你的设想。** 将同步文件夹设置在一个第三方云盘（如 Google Drive, Dropbox, OneDrive）的本地同步目录中。
+  2. **操作步骤 (以 Google Drive 为例):**
+     * 在教会的 Google 账号下创建一个共享文件夹，例如 `ProPresenter_Sync`。
+     * 所有参与制作的同工都在自己的电脑上安装 Google Drive 桌面版，并同步该文件夹。
+     * 在每台电脑的 ProPresenter 中，进入 `设置 -> 同步`。
+     * 选择“本地”同步方式，并将同步路径指向本地的 `ProPresenter_Sync` 文件夹。
+     * **关键：** 在“资料库”和“播放列表”选项上打勾。可以根据需要选择是否同步其他媒体文件。
+  3. **建立协作规则 (非常重要):**
+     * **“一次只允许一人编辑”原则:** 由于本地同步机制并非为多人实时编辑设计，同时编辑同一个播放列表（Playlist）会导致文件冲突和数据覆盖。
+     * **建立“签入/签出”沟通机制:** 在微信群里建立一个简单的沟通协议。例如：
+       * 某同工开始工作前，发消息：“我开始编辑 2023-10-29 的播放列表。”
+       * 工作完成后，等待 Google Drive 同步完成（小图标变绿），然后发消息：“2023-10-29 播放列表已更新完成。”
+     * 周日播放电脑在教会开机后，只需联网，打开 ProPresenter，它就会自动拉取最新的播放列表。
+* **成果:**
+  * 彻底告别传递电脑。
+  * 同工可以在任何有网络的地方，用自己的电脑进行制作。
+  * 为多人协作打下基础。
 
-## How It Works
+#### **Phase 2: 优化协作流程与建立“单一信息源” (Goal: Solve the Information Silo)**
 
-### Git LFS Configuration
+这个阶段是解决“内容收集”痛点的核心。你提到的 GitHub 是一个有趣的想法，但对于 ProPresenter 工作流可能过于复杂且不直观。我们可以调整一下思路。
 
-The `.gitattributes` file configures Git LFS to track:
-- **Media files**: Videos, audio, images in the Media folder
-- **ProPresenter files**: `.pro` files in Libraries and Playlists
-- **Background music**: Audio files in the background music folder
-- **Logo files**: Images in the logo folder
-- **Theme files**: Theme assets and configurations
+* **核心理念:** **“推”送信息，而非“拉”取信息。** 建立一个中心化的信息平台，让各个事工负责人（讲员、敬拜主领等）主动将信息“推”送到这个平台，而不是让制作同工到处“拉”。
+* **建议方案：创建“主日敬拜信息中心”**
+  1. **工具选择:** 使用 **Google Sheet** (你已在用，学习成本低) 或更强大的  **Airtable / Notion** 。Google Sheet 已足够。
+  2. **表格设计:** 创建一个功能强大的 Google Sheet。
+     * 一个 Sheet，每年一个文件，或按季度一个文件。
+     * 每个 Tab 代表一个主日，以日期命名（如 `2023-10-29`）。
+     * 每个 Tab 内包含所有需要的信息字段，并 **指定负责人和截止日期** ：
 
-### Google Drive Synchronization
+| 字段 (Field)       | 内容示例         | 负责人 (Owner) | 截止时间 (Deadline) | 状态 (Status) |
+| :----------------- | :--------------- | :------------- | :------------------ | :------------ |
+| **讲道信息** |                  |                |                     |               |
+| 讲员               | 张牧师           | 讲员/事工助理  | 周五 18:00          | ✅ 完成       |
+| 证道主题           | 在基督里的自由   | 讲员/事工助理  | 周六 21:00          | ⏳ 进行中     |
+| 证道经文           | 加拉太书 5:1-15  | 讲员/事工助理  | 周五 18:00          | ✅ 完成       |
+| 小标题1            | 律法的捆绑       | 讲员/事工助理  | 周六 21:00          | ⏳ 进行中     |
+| 小标题2            | 圣灵的引导       | 讲员/事工助理  | 周六 21:00          | ⏳ 进行中     |
+| **敬拜诗歌** |                  |                |                     |               |
+| 顺序1              | 《这里有荣耀》   | 敬拜主领       | 周五 18:00          | ✅ 完成       |
+| 歌词链接1          | [Google Doc链接] | 敬拜主领       | 周五 18:00          | ✅ 完成       |
+| 顺序2              | 《将天敞开》     | 敬拜主领       | 周五 18:00          | ✅ 完成       |
+| 歌词链接2          | [Google Doc链接] | 敬拜主领       | 周五 18:00          | ✅ 完成       |
+| **其他项目** |                  |                |                     |               |
+| 宣召经文           | 诗篇 100         | 司会           | 周五 18:00          | ✅ 完成       |
+| 报告事项1          | 下周三祷告会...  | 行政同工       | 周五 18:00          | ✅ 完成       |
 
-The Media folder is symbolically linked to:
-```
-/Users/jonathan_jing/Library/CloudStorage/GoogleDrive-jonathanjing@graceirvine.org/Shared drives/ProPresenter Sync/Media
-```
+* **工作流变革:**
+  * ProPresenter 制作同工的角色从“信息收集员”转变为“信息整合员”。
+  * 工作起点变成 **只看这一个 Google Sheet** 。
+  * 通过“状态”列，可以清晰地看到哪些信息还未到位，并直接@负责人。
+* **关于 GitHub 的重新思考:**
+  * **不适用场景:** 直接用 Git 管理 `.pro` 格式的 ProPresenter 文件。这些文件包含复杂的 XML 和二进制数据，合并（merge）冲突会是灾难，极易导致文件损坏。
+  * **适用场景 (高级):**
+    1. **管理 Phase 3 的自动化脚本:** GitHub 是管理代码（如 Python, JavaScript 脚本）的最佳工具。
+    2. **管理纯文本内容:** 如果教会有一个标准化的歌词库（`.txt` 文件），可以用 GitHub 来管理歌词的版本历史，追踪修改。但这对于多数教会来说，可能收益不高。
 
-This means:
-- Files added to the Media folder are automatically synced to Google Drive
-- Multiple users can access the same media files through Google Drive
-- Git LFS handles version control of the media files
+#### **Phase 3: 引入自动化，迈向智能化生产 (Goal: Automate Repetitive Tasks)**
 
-### File Tracking Strategy
+这是最具变革性的一步，将 Phase 2 建立的“信息中心”的价值最大化。
 
-| File Type | Git Tracking | Google Drive Sync | Purpose |
-|-----------|--------------|-------------------|---------|
-| Configuration files | ✅ Tracked | ❌ No | ProPresenter settings |
-| Media files | ✅ Git LFS | ✅ Synced | Videos, images, audio |
-| Library files (.pro) | ✅ Git LFS | ❌ No | Presentations and slides |
-| Playlist files | ✅ Git LFS | ❌ No | Playlist configurations |
-| Theme files | ✅ Git LFS | ❌ No | Visual themes |
-| Background music | ✅ Git LFS | ❌ No | Background audio |
-| Logo files | ✅ Git LFS | ❌ No | Branding assets |
+* **核心理念:** 让程序代替人来执行“复制粘贴”和“信息搬运”的工作。
+* **技术栈构想:**
 
-**重要说明：**
-- **`.pro`文件会被上传到GitHub**：这些是ProPresenter的核心文件，包含演示文稿内容
-- **使用Git LFS管理**：由于文件较大，使用Git LFS进行高效存储
-- **版本控制价值**：可以跟踪修改历史，回滚到之前的版本
-- **团队协作**：多人可以查看和协作编辑演示文稿
+  * **核心:** **Python** 脚本 (使用 `gspread` 库操作 Google Sheet，使用文件操作来处理 ProPresenter 的模板)。
+  * **控制 ProPresenter:** 对于 macOS，可以使用 **AppleScript** 或 **JXA (JavaScript for Automation)** 来命令 ProPresenter 执行创建、添加等操作。对于 Windows，可能需要更复杂的 UI 自动化工具（如 `pyautogui`），难度较大。**因此，在 Mac 平台上实现此阶段更容易。**
+  * **无代码/低代码方案:** **Zapier** 或  **Make.com** 。可以设置当 Google Sheet 更新时，触发一系列动作，但直接控制 ProPresenter 比较困难，可能需要通过文件生成的方式间接实现。
+* **自动化脚本 (AI Agent) 的工作流程设想:**
 
-## Usage
+  1. **触发:** 每周六晚上 10 点自动运行，或由同工手动触发。
+  2. **读取信息:** 脚本访问 Google Sheet，读取指定日期的 Tab 里的所有信息。
+  3. **创建播放列表:**
+     * 在 ProPresenter 的文件目录里，复制一个名为 `_Template` 的模板播放列表。
+     * 将其重命名为当周日期的名字，如 `2023-10-29 Service.proPlaylist`。
+  4. **自动填充内容 (通过控制 ProPresenter 或直接修改文件):**
+     * **诗歌:** 根据表格中的诗歌名称，在 ProPresenter 的歌词库中搜索，并将找到的诗歌按顺序添加到新的播放列表中。如果某首歌找不到，脚本会记录下来。
+     * **证道:** 读取证道主题、讲员、经文、小标题，自动生成一个基础的讲道PPT（几张包含标题和要点的幻灯片）。
+     * **经文:** 利用 ProPresenter 的圣经功能，自动创建包含宣召经文和证道经文的幻灯片。
+     * **报告事项:** 将报告事项的文本生成为几张简单的幻灯片。
+  5. **生成报告:** 脚本运行结束后，向微信群发送一条消息：
+     > "自动化任务完成！
+     >
+     > * 播放列表 '2023-10-29 Service' 已创建。
+     > * 诗歌《这里有荣耀》、《将天敞开》已添加。
+     > * **警告：** 诗歌《奇异恩典》在库中未找到，请手动添加！
+     > * 证道及报告事项已初步生成。
+     >   请同工进入 ProPresenter 进行最终检查和美化。"
+     >
+* **成果:**
 
-### Adding New Media Files
+  * 制作同工的工作从 2-3 小时的繁重劳动，变为 15-30 分钟的检查、微调和美化工作。
+  * 将同工从周六晚上的压力中解放出来。
+  * 极大降低了人为失误。
 
-1. **Add files to Media folder**:
-   ```bash
-   cp /path/to/new/video.mp4 Media/
-   ```
+---
 
-2. **Files are automatically**:
-   - Synced to Google Drive
-   - Tracked by Git LFS
-   - Available for version control
+### **总结与建议**
 
-### Committing Changes
+1. **立即启动 Phase 1:** 这是最容易实现且效果最显著的一步。只需教会投入少量时间进行设置和培训，就能解决最大的物理瓶颈。
+2. **稳步推进 Phase 2:** 建立“信息中心”是流程优化的核心。这需要得到牧者和各事工负责人的支持，因为它改变了大家的工作习惯。初期可以先试运行，逐步推广。
+3. **将 Phase 3 作为长期目标:** 自动化需要一定的技术投入。可以寻找教会内有编程背景的弟兄姊妹来主导这个项目，将其作为一个激动人心的“极客事工”来推动。
 
-```bash
-# Add all changes
-git add .
-
-# Commit with descriptive message
-git commit -m "Add new worship video and update playlist"
-
-# Push to remote repository
-git push
-```
-
-### Working with Large Files
-
-Git LFS automatically handles large files:
-- Files are stored in Git LFS storage
-- Only pointers are stored in the Git repository
-- Large files are downloaded on-demand when cloning
-
-## Troubleshooting
-
-### Media Folder Not Syncing
-
-1. **Check Google Drive sync status**:
-   - Open Google Drive app
-   - Ensure the "ProPresenter Sync" folder is syncing
-
-2. **Verify symlink**:
-   ```bash
-   ls -la Media
-   # Should show: Media -> /Users/jonathan_jing/Library/CloudStorage/GoogleDrive-jonathanjing@graceirvine.org/Shared drives/ProPresenter Sync/Media
-   ```
-
-3. **Recreate symlink if needed**:
-   ```bash
-   rm Media
-   ln -s "/Users/jonathan_jing/Library/CloudStorage/GoogleDrive-jonathanjing@graceirvine.org/Shared drives/ProPresenter Sync/Media" Media
-   ```
-
-### Git LFS Issues
-
-1. **Check Git LFS installation**:
-   ```bash
-   git lfs version
-   ```
-
-2. **Reinitialize Git LFS**:
-   ```bash
-   git lfs install
-   ```
-
-3. **Track files manually**:
-   ```bash
-   git lfs track "*.mp4"
-   git add .gitattributes
-   ```
-
-### Large Repository Size
-
-If the repository becomes too large:
-
-1. **Check LFS tracking**:
-   ```bash
-   git lfs ls-files
-   ```
-
-2. **Clean up old files**:
-   ```bash
-   git lfs prune
-   ```
-
-## Best Practices
-
-1. **Regular commits**: Commit changes frequently with descriptive messages
-2. **File organization**: Keep media files organized in appropriate subfolders
-3. **Backup**: Regularly backup the Google Drive folder
-4. **Collaboration**: Coordinate with team members when making major changes
-5. **File naming**: Use descriptive, consistent file names
-
-## Support
-
-For issues or questions:
-1. Check the troubleshooting section above
-2. Review Git LFS documentation: https://git-lfs.github.com/
-3. Contact the project maintainer
-
-## License
-
-This project is for internal use by Grace Irvine Church.
-
+这份改进方案的核心，是从**“人适应工具” **的模式，转变为** “让工具和流程为人服务”**的模式。希望这份详细的分析和方案能帮助你的教会事工更上一层楼！
