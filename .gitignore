@@ -28,9 +28,18 @@ Thumbs.db
 *.log
 *.out
 
+# Media files
+*.mp3
+*.wav
+*.aac
+*.flac
+*.ogg
+*.wma
+*.m4a
+
 # Temporary directories
 tmp/
 temp/
 /background music
 /Doc Sync
-/Media
+/Media/ProContent
