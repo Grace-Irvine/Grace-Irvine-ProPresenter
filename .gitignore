@@ -15,9 +15,6 @@ Thumbs.db
 *.backup
 *.old
 
-# Git LFS files
-.git/lfs/
-
 # Editor files
 .vscode/
 .idea/
@@ -28,7 +25,16 @@ Thumbs.db
 *.log
 *.out
 
-# Media files
+# Media files - 大文件不上传到GitHub
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.flv
+*.mkv
+*.m4v
+*.3gp
+*.webm
 *.mp3
 *.wav
 *.aac
@@ -40,6 +46,9 @@ Thumbs.db
 # Temporary directories
 tmp/
 temp/
-/background music
-/Doc Sync
-/Media/ProContent
+
+# ProPresenter specific folders with large files
+/background music/
+/Media/
+/logo/
+/Doc Sync/
