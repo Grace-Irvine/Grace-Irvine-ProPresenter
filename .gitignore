@@ -48,7 +48,7 @@ tmp/
 temp/
 
 # ProPresenter specific folders with large files
-/background music/
+/background music/ProContent
 /Media/
 /logo/
 /Doc Sync/
